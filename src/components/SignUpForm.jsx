@@ -121,7 +121,17 @@ const SignUpForm = () => {
                 }`}
             >
                 <legend>Choose Account Type</legend>
-                <RadioInput
+                {/* Now mapping over radio inputs as well */}
+                {radioInputs.map((input) => (
+                    <RadioInput
+                        key={input.id}
+                        {...input}
+                        checked={form.accountType === input.value}
+                        onChange={handleChange}
+                    />
+                ))}
+                {/* Old version from lecture for reference */}
+                {/* <RadioInput
                     {...radioInputs[0]}
                     onChange={handleChange}
                     checked={form.accountType === 'student'}
@@ -130,9 +140,10 @@ const SignUpForm = () => {
                     {...radioInputs[1]}
                     onChange={handleChange}
                     checked={form.accountType === 'alumni'}
-                />
+                /> */}
                 <span className='label-text-alt text-error'>*required</span>
             </fieldset>
+            {/* Original non-Reacty method */}
             {/* <label htmlFor='first-name'>First Name</label>
             <input
                 id='first-name'
